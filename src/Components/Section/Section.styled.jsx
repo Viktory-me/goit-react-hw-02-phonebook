@@ -1,15 +1,13 @@
 import styled from "@emotion/styled";
 
 export const Sections = styled.section`
-	background-color: grey;
+	background-color: #44424232;
 	margin-top: 20px;
-`;
-
-export const TitleSection = styled.h2`
-	color: #c21111e2;
-	font-weight: bold;
-	text-shadow: 1px 1px 1px pink;
-	text-align: center;
-	margin: 0 auto;
-	padding: 10px 0 10px 0;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	&:not(:first-child) {
+		margin-bottom: 20px;
+	}
 `;

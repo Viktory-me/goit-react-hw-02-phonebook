@@ -1,5 +1,6 @@
 import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import "./Form.module.css";
 
 function MyForm({ onSubmit }) {
 	return (
@@ -7,8 +8,10 @@ function MyForm({ onSubmit }) {
 			initialValues={{ name: "", number: "" }}
 			validate={(values) => {
 				const errors = {};
-				if (!values.number) {
-					errors.number = "Required";
+				if (!values.name) {
+					errors.name = "Введите ваше имя";
+				} else if (!values.number) {
+					errors.number = "Введите ваш номер";
 				} else if (
 					!/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/i.test(
 						values.number
@@ -19,9 +22,11 @@ function MyForm({ onSubmit }) {
 				}
 				return errors;
 			}}
-			onSubmit={(values, { setSubmitting }) => {
+			onSubmit={(values, { setSubmitting, resetForm }) => {
+				// console.log(values);
 				onSubmit(values);
 				setSubmitting(false);
+				resetForm();
 			}}
 		>
 			<Form autoComplete='off'>
